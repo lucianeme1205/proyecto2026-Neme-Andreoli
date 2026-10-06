@@ -1,0 +1,459 @@
+/* ===== 1. VARIABLES Y CONFIGURACIÓN BASE ===== */
+:root {
+    --color-fondo: #FBF7F4;
+    --color-fondo-alt: #F3E7E2;
+    --color-tarjeta: #FFFFFF;
+    --color-texto: #3A2E2E;
+    --color-texto-suave: #7A6A68;
+    --color-principal: #A8505F;
+    --color-principal-hover: #8E3F4D;
+    --color-secundario: #E9C4B0;
+    --color-secundario-hover: #DDB09A;
+    --color-borde: #E6D8D2;
+    --fuente-titulos: "Poppins", Arial, Helvetica, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    line-height: 1.6;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+h1, h2, h3 {
+    font-family: var(--fuente-titulos);
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ===== 2. BOTONES ===== */
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-chico {
+    padding: 8px 16px;
+}
+
+.btn-primario {
+    background-color: var(--color-principal);
+    color: #FFFFFF;
+}
+
+.btn-primario:hover {
+    background-color: var(--color-principal-hover);
+}
+
+.btn-secundario {
+    background-color: var(--color-secundario);
+    color: var(--color-texto);
+}
+
+.btn-secundario:hover {
+    background-color: var(--color-secundario-hover);
+}
+
+.btn-borde {
+    background-color: transparent;
+    border-color: var(--color-principal);
+    color: var(--color-principal);
+}
+
+.btn-borde:hover {
+    background-color: var(--color-principal);
+    color: #FFFFFF;
+}
+
+/* ===== 3. ENCABEZADO / NAVEGACIÓN ===== */
+.header-principal {
+    background-color: var(--color-tarjeta);
+    border-bottom: 1px solid var(--color-borde);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 70px;
+}
+
+.logo {
+    font-size: 24px;
+    letter-spacing: 2px;
+    color: var(--color-principal);
+}
+
+.nav-menu ul {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+}
+
+.nav-menu a {
+    font-weight: bold;
+    transition: color 0.2s ease;
+}
+
+.nav-menu a:hover {
+    color: var(--color-principal);
+}
+
+/* ===== 4. HERO ===== */
+.hero {
+    padding: 60px 0;
+    background-color: var(--color-fondo-alt);
+}
+
+.hero-container {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.hero-texto, .hero-imagen {
+    flex: 1;
+}
+
+.hero-texto h2 {
+    font-size: 38px;
+    margin-bottom: 15px;
+    line-height: 1.2;
+}
+
+.hero-texto p {
+    color: var(--color-texto-suave);
+    margin-bottom: 25px;
+}
+
+.hero-botones {
+    display: flex;
+    gap: 15px;
+}
+
+.hero-imagen img {
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(58, 46, 46, 0.12);
+}
+
+/* ===== 5. PRODUCTOS ===== */
+.productos-seccion, .contacto-seccion {
+    padding: 60px 0;
+}
+
+.titulo-seccion {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.subtitulo-seccion {
+    text-align: center;
+    color: var(--color-texto-suave);
+    margin-bottom: 40px;
+}
+
+.grid-productos {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+.tarjeta-producto {
+    background-color: var(--color-tarjeta);
+    border: 1px solid var(--color-borde);
+    border-radius: 6px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.tarjeta-producto img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.info-producto {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.info-producto h3 {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.categoria {
+    font-size: 13px;
+    color: var(--color-texto-suave);
+    margin-bottom: 15px;
+}
+
+.precio {
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--color-principal);
+    margin-top: auto;
+    margin-bottom: 15px;
+}
+
+.campo-cantidad {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+    font-size: 13px;
+}
+
+.campo-cantidad label {
+    font-weight: bold;
+    color: var(--color-texto-suave);
+}
+
+.campo-cantidad input {
+    padding: 6px;
+    border: 1px solid var(--color-borde);
+    border-radius: 4px;
+    text-align: center;
+    font-family: inherit;
+}
+
+/* ===== 6. NOSOTRAS ===== */
+.nosotras-seccion {
+    background-color: var(--color-fondo-alt);
+    padding: 60px 0;
+    text-align: center;
+}
+
+.nosotras-texto {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.nosotras-texto h2 {
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.nosotras-texto p {
+    margin-bottom: 10px;
+    color: var(--color-texto-suave);
+}
+
+.nosotras-texto .btn {
+    margin-top: 15px;
+}
+
+/* ===== 7. FORMULARIO DE CONTACTO ===== */
+.formulario-contacto {
+    max-width: 550px;
+    margin: 0 auto;
+    background-color: var(--color-tarjeta);
+    padding: 30px;
+    border: 1px solid var(--color-borde);
+    border-radius: 6px;
+}
+
+.campo {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.campo label {
+    font-weight: bold;
+    margin-bottom: 6px;
+    font-size: 14px;
+}
+
+.campo input, .campo textarea {
+    padding: 10px;
+    border: 1px solid var(--color-borde);
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 14px;
+    color: var(--color-texto);
+    background-color: var(--color-fondo);
+}
+
+.campo input:focus, .campo textarea:focus, .campo-cantidad input:focus {
+    outline: none;
+    border-color: var(--color-principal);
+    background-color: #FFFFFF;
+}
+
+.btn-enviar {
+    width: 100%;
+}
+
+/* ===== 8. FOOTER ===== */
+.footer-principal {
+    background-color: var(--color-texto);
+    color: var(--color-fondo);
+    padding: 25px 0;
+    font-size: 14px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-links a {
+    margin-left: 15px;
+    color: var(--color-secundario);
+}
+
+.footer-links a:hover {
+    color: #FFFFFF;
+}
+
+/* ===== 9. MODAL DEL CARRITO ===== */
+#modalCarrito {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 200;
+}
+
+#modalCarrito.modal-abierto {
+    display: block;
+}
+
+#modalCarritoContenido {
+    background-color: var(--color-tarjeta);
+    width: 90%;
+    max-width: 480px;
+    margin: 80px auto;
+    padding: 25px;
+    border-radius: 6px;
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+.carrito-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid var(--color-borde);
+    padding: 10px 0;
+}
+
+.carrito-item img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.carrito-item-info {
+    flex-grow: 1;
+    font-size: 14px;
+}
+
+.carrito-vacio {
+    padding: 15px 0;
+    color: var(--color-texto-suave);
+}
+
+#totalCarrito {
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+.modal-acciones {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+/* ===== 10. RESPONSIVE ===== */
+@media (max-width: 850px) {
+    .hero-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-botones {
+        justify-content: center;
+    }
+
+    .grid-productos {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 700px) {
+    .nav-container {
+        flex-wrap: wrap;
+        row-gap: 10px;
+        padding-top: 12px;
+        padding-bottom: 12px;
+    }
+
+    .nav-menu {
+        order: 3;
+        width: 100%;
+    }
+
+    .nav-menu ul {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 18px;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+}
+
+@media (max-width: 500px) {
+    .grid-productos {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-texto h2 {
+        font-size: 30px;
+    }
+}

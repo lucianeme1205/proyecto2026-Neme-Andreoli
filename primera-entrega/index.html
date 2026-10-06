@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Lucía Neme y Sofía Andreoli">
+    <meta name="description" content="Tersa: cosmética y maquillaje vegano. Catálogo de labiales, gloss, paletas de sombras y máscaras de pestañas.">
+    <meta name="keywords" content="cosmética, maquillaje, vegano, labial, gloss, sombras, máscara de pestañas, tersa">
+    <title>Tersa — Cosmética &amp; Maquillaje</title>
+    <link rel="icon" type="image/png" href="imagenes/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body onload="iniciar()">
+    <header class="header-principal">
+        <div class="container nav-container">
+            <h1 class="logo"><a href="index.html">TERSA</a></h1>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="index.html#inicio">Inicio</a></li>
+                    <li><a href="index.html#productos">Productos</a></li>
+                    <li><a href="nosotras.html">Nosotras</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </nav>
+            <div class="nav-cart">
+                <button type="button" class="btn btn-borde btn-chico" onclick="abrirCarrito()">Carrito (<span id="contadorCarrito">0</span>)</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" id="inicio">
+            <div class="container hero-container">
+                <div class="hero-texto">
+                    <h2>Maquillaje pensado para tu piel real</h2>
+                    <p>Fórmulas veganas, ligeras y de larga duración. Resaltá tu belleza natural sin complicaciones.</p>
+                    <div class="hero-botones">
+                        <a href="#productos" class="btn btn-primario">Ver Catálogo</a>
+                        <a href="contacto.html" class="btn btn-secundario">Consultas</a>
+                    </div>
+                </div>
+                <div class="hero-imagen">
+                    <img src="imagenes/presentacion.jpg" alt="Productos de maquillaje Tersa">
+                </div>
+            </div>
+        </section>
+
+        <section class="productos-seccion" id="productos">
+            <div class="container">
+                <h2 class="titulo-seccion">Nuestros Productos</h2>
+                <p class="subtitulo-seccion">Conocé nuestra línea destacada para rostro, labios y ojos.</p>
+                <div class="grid-productos">
+                    <article class="tarjeta-producto">
+                        <img src="imagenes/labial.jpg" alt="Labial Matte Velvet">
+                        <div class="info-producto">
+                            <h3>Labial Matte Velvet</h3>
+                            <p class="categoria">Labios · Tono Terracota</p>
+                            <p class="precio">$ 4.200</p>
+                            <div class="campo-cantidad">
+                                <label for="cantidad-labial">Cantidad:</label>
+                                <input type="text" id="cantidad-labial" name="cantidad-labial" size="2" maxlength="2" value="1" placeholder="1">
+                            </div>
+                            <button type="button" class="btn btn-borde btn-chico" onclick="agregarAlCarrito('Labial Matte Velvet', 'cantidad-labial')">Agregar al carrito</button>
+                        </div>
+                    </article>
+                    <article class="tarjeta-producto">
+                        <img src="imagenes/gloss.jpg" alt="Gloss Brillo Radiante">
+                        <div class="info-producto">
+                            <h3>Gloss Brillo Radiante</h3>
+                            <p class="categoria">Labios · Tono Nude</p>
+                            <p class="precio">$ 3.600</p>
+                            <div class="campo-cantidad">
+                                <label for="cantidad-gloss">Cantidad:</label>
+                                <input type="text" id="cantidad-gloss" name="cantidad-gloss" size="2" maxlength="2" value="1" placeholder="1">
+                            </div>
+                            <button type="button" class="btn btn-borde btn-chico" onclick="agregarAlCarrito('Gloss Brillo Radiante', 'cantidad-gloss')">Agregar al carrito</button>
+                        </div>
+                    </article>
+                    <article class="tarjeta-producto">
+                        <img src="imagenes/paleta.jpg" alt="Paleta de Sombras Warm">
+                        <div class="info-producto">
+                            <h3>Paleta de Sombras Warm</h3>
+                            <p class="categoria">Ojos · 6 Tonos</p>
+                            <p class="precio">$ 8.900</p>
+                            <div class="campo-cantidad">
+                                <label for="cantidad-paleta">Cantidad:</label>
+                                <input type="text" id="cantidad-paleta" name="cantidad-paleta" size="2" maxlength="2" value="1" placeholder="1">
+                            </div>
+                            <button type="button" class="btn btn-borde btn-chico" onclick="agregarAlCarrito('Paleta de Sombras Warm', 'cantidad-paleta')">Agregar al carrito</button>
+                        </div>
+                    </article>
+                    <article class="tarjeta-producto">
+                        <img src="imagenes/mascara.jpg" alt="Máscara Lash Volume">
+                        <div class="info-producto">
+                            <h3>Máscara Lash Volume</h3>
+                            <p class="categoria">Ojos · Negro Intenso</p>
+                            <p class="precio">$ 5.200</p>
+                            <div class="campo-cantidad">
+                                <label for="cantidad-mascara">Cantidad:</label>
+                                <input type="text" id="cantidad-mascara" name="cantidad-mascara" size="2" maxlength="2" value="1" placeholder="1">
+                            </div>
+                            <button type="button" class="btn btn-borde btn-chico" onclick="agregarAlCarrito('Máscara Lash Volume', 'cantidad-mascara')">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer-principal">
+        <div class="container footer-container">
+            <p>&copy; 2026 Tersa Cosmética — Taller de Desarrollo Web</p>
+            <div class="footer-links">
+                <a href="contacto.html">Contacto</a>
+                <a href="https://github.com/lucianeme1205/proyecto2026-Neme-Andreoli">Repositorio en GitHub</a>
+            </div>
+        </div>
+    </footer>
+
+    <div id="modalCarrito">
+        <div id="modalCarritoContenido">
+            <h3>Tu Carrito</h3>
+            <div id="listaCarrito"></div>
+            <p id="totalCarrito">Total: $ 0</p>
+            <div class="modal-acciones">
+                <button type="button" class="btn btn-borde btn-chico" onclick="vaciarCarrito()">Vaciar Carrito</button>
+                <button type="button" class="btn btn-primario btn-chico" onclick="cerrarCarrito()">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
