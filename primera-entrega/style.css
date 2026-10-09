@@ -168,7 +168,8 @@ h1, h2, h3 {
 }
 
 /* ===== 5. PRODUCTOS ===== */
-.productos-seccion, .contacto-seccion {
+
+.productos-seccion, .contacto-seccion, .valores-seccion{
     padding: 60px 0;
 }
 
@@ -277,7 +278,22 @@ h1, h2, h3 {
 .nosotras-texto .btn {
     margin-top: 15px;
 }
+.grid-valores {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
 
+.tarjeta-valor {
+    background-color: var(--color-tarjeta);
+    border: 1px solid var(--color-borde);
+    border-radius: 6px;
+    padding: 20px;
+    text-align: center;
+}
+.valores-seccion .titulo-seccion {
+    margin-bottom: 30px;
+}
 /* ===== 7. FORMULARIO DE CONTACTO ===== */
 .formulario-contacto {
     max-width: 550px;
@@ -314,8 +330,8 @@ h1, h2, h3 {
     outline: none;
     border-color: var(--color-principal);
     background-color: #FFFFFF;
+    box-shadow: 0 0 0 3px rgba(168, 80, 95, 0.25);
 }
-
 .btn-enviar {
     width: 100%;
 }
@@ -445,6 +461,9 @@ h1, h2, h3 {
         flex-direction: column;
         gap: 10px;
         text-align: center;
+    }
+    .grid-valores {
+        grid-template-columns: 1fr;
     }
 }
 
