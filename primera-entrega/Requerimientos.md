@@ -18,28 +18,28 @@
 - [ ] Debe ser realizado con el template
 
 ## Wireframe/Mockup
-- [ ] Dibujado con algún programa como: Figma, AdobeXD, Canvas, Draw.io en Drive, Pencil Project, Mockups, NinjaMock, o similares.
-- [ ] Diseño de Mensajes de error para el usuario
-- [ ] Versión Desktop y Mobile
-- [ ] Guardado en formato PNG, JPG ó PDF
-- [ ] Dentro de una carpeta llamada "Wireframe" ó "Mockup"
+- [x] Dibujado con algún programa como: Figma, AdobeXD, Canvas, Draw.io en Drive, Pencil Project, Mockups, NinjaMock, o similares.
+- [x] Diseño de Mensajes de error para el usuario
+- [x] Versión Desktop y Mobile
+- [x] Guardado en formato PNG, JPG ó PDF
+- [x] Dentro de una carpeta llamada "Wireframe" ó "Mockup"
 
 
 ## Repositorio
-- [ ] El proyecto debe estar subido al repositorio adecuado "Proyecto2026-ApellidoAlumno1-ApellidoAlumno2" (en gitHub Classroom)
-- [ ] Crear un Readme.MD en la base del proyecto y colocar información del proyecto/página (mínimamente: título del proyecto, autores, link de gh-pages, contenido de la página,  listado de tecnologías usadas, etc)
-- [ ] En el **readme.md** se debe emplear **Markdown** y aplicar negrita, título de orden 1, 2 y 3, link, items, tabla, index a cada sección
-- [ ] El código debe estar en **gitHubPages** (emplear gh-pages o configurar github para que se tome a la main como la página a visualizar)
-- [ ] Se debe crear al menos una branch por cada desarrollador
-- [ ] Publicar la Web empleando GitHubPages
-- [ ] El repositorio no debe contener archivos innecesarios (no debe contener .idea o .vsc o .DS_Store o node_modules, en todo caso emplear **.gitignore**)
-- [ ] Se debe emplear conventional commits
-- [ ] El historial debe ser consistente y tener al menos 10 commits separados en al menos 4 días
+- [x] El proyecto debe estar subido al repositorio adecuado "Proyecto2026-ApellidoAlumno1-ApellidoAlumno2" (en gitHub Classroom)
+- [x] Crear un Readme.MD en la base del proyecto y colocar información del proyecto/página (mínimamente: título del proyecto, autores, link de gh-pages, contenido de la página,  listado de tecnologías usadas, etc)
+- [x] En el **readme.md** se debe emplear **Markdown** y aplicar negrita, título de orden 1, 2 y 3, link, items, tabla, index a cada sección
+- [x] El código debe estar en **gitHubPages** (emplear gh-pages o configurar github para que se tome a la main como la página a visualizar)
+- [x] Se debe crear al menos una branch por cada desarrollador
+- [x] Publicar la Web empleando GitHubPages
+- [x] El repositorio no debe contener archivos innecesarios (no debe contener .idea o .vsc o .DS_Store o node_modules, en todo caso emplear **.gitignore**)
+- [x] Se debe emplear conventional commits
+- [x] El historial debe ser consistente y tener al menos 10 commits separados en al menos 4 días
 
 ## Proyecto general
-- [ ] NO está permitido descargar un TEMPLATE (diseño 100% desde cero)
-- [ ] La página principal debe llamarse index
-- [ ] La estructura del proyecto debe ser adecuada (crear una carpeta para las imágenes, otra para los sketch/mockups).
+- [x] NO está permitido descargar un TEMPLATE (diseño 100% desde cero)
+- [x] La página principal debe llamarse index
+- [x] La estructura del proyecto debe ser adecuada (crear una carpeta para las imágenes, otra para los sketch/mockups).
 - [ ] Identar correctamente el código
 - [ ] No debe haber errores presentes (en Webstorm *Code* > *Inspect Code* para verificar que no haya errores)
 - [ ] Se debe emplear favicon
