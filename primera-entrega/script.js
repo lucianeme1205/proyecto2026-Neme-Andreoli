@@ -8,6 +8,11 @@ const productos = [
     { nombre: "Paleta de Sombras Warm", precio: 8900, imagen: "imagenes/paleta.jpg" },
     { nombre: "Máscara Lash Volume", precio: 5200, imagen: "imagenes/mascara.jpg" }
 ];
+/**
+ * Máximo de unidades de un mismo producto que se pueden tener en el carrito.
+ * @type {number}
+ */
+const MAXIMO_POR_PRODUCTO = 99;
 
 /**
  * Formatea un número como precio en pesos argentinos, sin decimales.
@@ -24,13 +29,19 @@ const formatearPrecio = (valor) => {
 };
 
 /**
- * Obtiene el carrito guardado en localStorage.
+ * Obtiene el carrito guardado en localStorage, descartando datos dañados
+ * y productos que ya no existen en el catálogo.
  * @method obtenerCarrito
- * @return {Array<{nombre: string, cantidad: number}>} Carrito actual (vacío si no hay nada guardado).
+ * @return {Array<{nombre: string, cantidad: number}>} Carrito actual (vacío si no hay nada válido).
  */
 const obtenerCarrito = () => {
-    const datos = localStorage.getItem("carritoTersa");
-    return datos ? JSON.parse(datos) : [];
+    try {
+        const datos = localStorage.getItem("carritoTersa");
+        const carrito = datos ? JSON.parse(datos) : [];
+        return carrito.filter((item) => productos.some((producto) => producto.nombre === item.nombre));
+    } catch (error) {
+        return [];
+    }
 };
 
 /**
@@ -74,16 +85,6 @@ const validarCantidad = (inputId) => {
     return Number(valor);
 };
 
-/**
- * Actualiza el número que se muestra en el botón del carrito.
- * @method actualizarContadorCarrito
- * @return {void}
- */
-const actualizarContadorCarrito = () => {
-    const carrito = obtenerCarrito();
-    const totalItems = carrito.reduce((acumulado, item) => acumulado + item.cantidad, 0);
-    document.getElementById("contadorCarrito").innerHTML = totalItems;
-};
 
 /**
  * Calcula el subtotal de cada producto y el total a pagar, y los muestra en el modal del carrito.
@@ -116,7 +117,7 @@ const renderizarCarrito = () => {
 
 /**
  * Agrega un producto al carrito con la cantidad escrita por el usuario,
- * comprobando antes que esa cantidad sea válida.
+ * comprobando que sea válida y que no supere el máximo permitido por producto.
  * @method agregarAlCarrito
  * @param {string} nombre - Nombre del producto.
  * @param {string} inputId - Id del input de cantidad asociado al producto.
@@ -124,18 +125,24 @@ const renderizarCarrito = () => {
  */
 const agregarAlCarrito = (nombre, inputId) => {
     const cantidad = validarCantidad(inputId);
-    if (cantidad !== null) {
-        const carrito = obtenerCarrito();
-        const existente = carrito.find((item) => item.nombre === nombre);
-        if (existente) {
-            existente.cantidad += cantidad;
-        } else {
-            carrito.push({ nombre: nombre, cantidad: cantidad });
-        }
-        guardarCarrito(carrito);
-        actualizarContadorCarrito();
-        alert(`Se agregaron ${cantidad} unidad(es) de "${nombre}" al carrito.`);
+    if (cantidad === null) {
+        return;
     }
+    const carrito = obtenerCarrito();
+    const existente = carrito.find((item) => item.nombre === nombre);
+    const cantidadActual = existente ? existente.cantidad : 0;
+    if (cantidadActual + cantidad > MAXIMO_POR_PRODUCTO) {
+        avisarError(document.getElementById(inputId), `Podés llevar hasta ${MAXIMO_POR_PRODUCTO} unidades por producto. Ya tenés ${cantidadActual} en el carrito.`);
+        return;
+    }
+    if (existente) {
+        existente.cantidad += cantidad;
+    } else {
+        carrito.push({ nombre: nombre, cantidad: cantidad });
+    }
+    guardarCarrito(carrito);
+    actualizarContadorCarrito();
+    alert(`Se agregaron ${cantidad} unidad(es) de "${nombre}" al carrito.`);
 };
 
 /**
@@ -182,14 +189,15 @@ const cerrarCarrito = () => {
 };
 
 /**
- * Comprueba que el nombre tenga al menos 3 caracteres y solo letras y espacios.
+ * Comprueba que el nombre tenga al menos dos palabras (nombre y apellido),
+ * solo letras, espacios, guiones o apóstrofes, y hasta 50 caracteres.
  * @method validarNombre
  * @param {string} nombre - Nombre ingresado por el usuario.
  * @return {boolean} true si el nombre es válido.
  */
 const validarNombre = (nombre) => {
-    const patron = /^[A-Za-zÁÉÍÓÚÜÑáéíóúüñ ]{3,50}$/;
-    return patron.test(nombre.trim());
+    const patron = /^[A-Za-zÁÉÍÓÚÜÑáéíóúüñ'-]+( [A-Za-zÁÉÍÓÚÜÑáéíóúüñ'-]+)+$/;
+    return nombre.trim().length <= 50 && patron.test(nombre.trim());
 };
 
 /**
@@ -226,7 +234,7 @@ const enviarFormulario = (evento) => {
     const email = document.getElementById("email");
     const mensaje = document.getElementById("mensaje");
     if (!validarNombre(nombre.value)) {
-        avisarError(nombre, "Ingresá tu nombre y apellido (solo letras, mínimo 3 caracteres).");
+        avisarError(nombre, "Ingresá tu nombre y apellido (solo letras, separados por un espacio).");
     } else if (!validarEmail(email.value)) {
         avisarError(email, "Ingresá un correo electrónico válido (ej: nombre@correo.com).");
     } else if (!validarMensaje(mensaje.value)) {
@@ -236,6 +244,17 @@ const enviarFormulario = (evento) => {
         evento.target.reset();
     }
     return false;
+};
+
+/**
+ * Actualiza el número que se muestra en el botón del carrito.
+ * @method actualizarContadorCarrito
+ * @return {void}
+ */
+const actualizarContadorCarrito = () => {
+    const carrito = obtenerCarrito();
+    const totalItems = carrito.reduce((acumulado, item) => acumulado + item.cantidad, 0);
+    document.getElementById("contadorCarrito").textContent = totalItems;
 };
 
 /**
