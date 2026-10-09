@@ -55,8 +55,8 @@ Cuando un valor es incorrecto se avisa con un `alert` y se blanquea el campo:
 
 | Campo | Regla |
 |---|---|
-| Cantidad | Número entero mayor a 0 |
-| Nombre y Apellido | Solo letras, mínimo 3 caracteres |
+| Cantidad | Número entero mayor a 0, hasta 99 unidades por producto en el carrito |
+| Nombre y Apellido | Al menos dos palabras, solo letras, guiones o apóstrofes (máximo 50 caracteres) |
 | Correo Electrónico | Formato `nombre@correo.com` |
 | Consulta o Mensaje | Mínimo 10 caracteres |
 
