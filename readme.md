@@ -55,7 +55,7 @@ Cuando un valor es incorrecto se avisa con un `alert` y se blanquea el campo:
 
 | Campo | Regla |
 |---|---|
-| Cantidad | Número entero mayor a 0, hasta 99 unidades por producto en el carrito |
+| Cantidad | Número entero mayor a 0, hasta 99 unidades por producto en el carrito, para asegurar stock |
 | Nombre y Apellido | Al menos dos palabras, solo letras, guiones o apóstrofes (máximo 50 caracteres) |
 | Correo Electrónico | Formato `nombre@correo.com` |
 | Consulta o Mensaje | Mínimo 10 caracteres |
