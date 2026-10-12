@@ -92,6 +92,15 @@ h1, h2, h3 {
     background-color: var(--color-principal);
     color: #FFFFFF;
 }
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.btn-borde:disabled:hover {
+    background-color: transparent;
+    color: var(--color-principal);
+}
 
 /* ===== 3. ENCABEZADO / NAVEGACIÓN ===== */
 .header-principal {

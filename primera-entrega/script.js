@@ -87,7 +87,8 @@ const validarCantidad = (inputId) => {
 
 
 /**
- * Calcula el subtotal de cada producto y el total a pagar, y los muestra en el modal del carrito.
+ * Calcula el subtotal de cada producto y el total a pagar, los muestra en el modal del carrito
+ * y deshabilita el botón de vaciar cuando el carrito está vacío.
  * @method renderizarCarrito
  * @return {void}
  */
@@ -113,6 +114,7 @@ const renderizarCarrito = () => {
     });
     document.getElementById("listaCarrito").innerHTML = html || "<p class=\"carrito-vacio\">Todavía no agregaste nada.</p>";
     document.getElementById("totalCarrito").innerHTML = `Total: ${formatearPrecio(total)}`;
+    document.getElementById("botonVaciar").disabled = carrito.length === 0;
 };
 
 /**
