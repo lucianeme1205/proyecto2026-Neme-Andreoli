@@ -94,12 +94,7 @@ h1, h2, h3 {
 }
 .btn:disabled {
     opacity: 0.5;
-    cursor: not-allowed;
-}
-
-.btn-borde:disabled:hover {
-    background-color: transparent;
-    color: var(--color-principal);
+    pointer-events: none;
 }
 
 /* ===== 3. ENCABEZADO / NAVEGACIÓN ===== */
