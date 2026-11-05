@@ -1,5 +1,20 @@
+import { Route, Routes } from 'react-router-dom';
+import Layout from '@components/Layout';
+import NoEncontrada from '@pages/NoEncontrada';
+
+/**
+ * Define las rutas del sitio. Todas se muestran dentro del Layout.
+ * @method App
+ * @return {JSX.Element} Rutas de la aplicación.
+ */
 const App = () => {
-  return <h1>Tersa</h1>;
+  return (
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route path="*" element={<NoEncontrada />} />
+      </Route>
+    </Routes>
+  );
 };
 
 export default App;
