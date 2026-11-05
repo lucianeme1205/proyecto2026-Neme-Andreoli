@@ -81,7 +81,6 @@
       "imagen": "delineador.png"
     }
   ],
-  "carrito": [],
-  "consultas": [],
-  "$schema": "./node_modules/json-server/schema.json"
+   "carrito": [],
+  "consultas": []
 }
