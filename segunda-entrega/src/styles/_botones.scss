@@ -1,0 +1,51 @@
+@use 'sass:list';
+@use 'variables' as *;
+
+$variantes: (
+  primario: ($color-principal, #FFFFFF, $color-principal-hover),
+  secundario: ($color-secundario, $color-texto, $color-secundario-hover)
+);
+
+.btn {
+  display: inline-block;
+  padding: 12px 24px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.2s ease, color 0.2s ease;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &-chico {
+    padding: 8px 16px;
+  }
+
+  &-borde {
+    background-color: transparent;
+    border-color: $color-principal;
+    color: $color-principal;
+
+    &:hover:not(:disabled) {
+      background-color: $color-principal;
+      color: #FFFFFF;
+    }
+  }
+}
+
+@each $nombre, $colores in $variantes {
+  .btn-#{$nombre} {
+    background-color: list.nth($colores, 1);
+    color: list.nth($colores, 2);
+
+    &:hover:not(:disabled) {
+      background-color: list.nth($colores, 3);
+    }
+  }
+}

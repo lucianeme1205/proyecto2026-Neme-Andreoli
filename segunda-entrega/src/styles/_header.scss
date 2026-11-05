@@ -1,0 +1,73 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.header-principal {
+  background-color: $color-tarjeta;
+  border-bottom: 1px solid $color-borde;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  min-height: 70px;
+}
+
+.logo {
+  font-size: 24px;
+  letter-spacing: 2px;
+  color: $color-principal;
+}
+
+.nav-menu ul {
+  display: flex;
+  list-style: none;
+  gap: 25px;
+
+  a {
+    font-weight: bold;
+    transition: color 0.2s ease;
+
+    &:hover,
+    &.active {
+      color: $color-principal;
+    }
+  }
+}
+
+.nav-usuario {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+}
+
+@include tablet {
+  .nav-container {
+    flex-wrap: wrap;
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+
+  .nav-menu {
+    order: 3;
+    width: 100%;
+
+    ul {
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+  }
+}
+
+@include mobile {
+  .nav-menu ul {
+    gap: 12px;
+    font-size: 15px;
+  }
+}
