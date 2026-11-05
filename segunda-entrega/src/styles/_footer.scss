@@ -1,0 +1,32 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.footer-principal {
+  background-color: $color-texto;
+  color: $color-fondo;
+  padding: 25px 0;
+  font-size: 14px;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-links a {
+  margin-left: 15px;
+  color: $color-secundario;
+
+  &:hover {
+    color: #FFFFFF;
+  }
+}
+
+@include mobile {
+  .footer-container {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+}

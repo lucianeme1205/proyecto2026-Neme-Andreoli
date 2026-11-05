@@ -1,0 +1,86 @@
+{
+  "productos": [
+    {
+      "id": "1",
+      "nombre": "Labial Matte Velvet",
+      "description": "Labial de acabado mate y larga duración, con textura suave que no reseca.",
+      "categoria": "Labios",
+      "tono": "Terracota",
+      "marca": "Tersa",
+      "precio": 4200,
+      "imagen": "labial.jpg"
+    },
+    {
+      "id": "2",
+      "nombre": "Gloss Brillo Radiante",
+      "description": "Gloss hidratante con brillo espejo y fórmula no pegajosa.",
+      "categoria": "Labios",
+      "tono": "Nude",
+      "marca": "Tersa",
+      "precio": 3600,
+      "imagen": "gloss.jpg"
+    },
+    {
+      "id": "3",
+      "nombre": "Paleta de Sombras Warm",
+      "description": "Paleta de seis tonos cálidos, mates y satinados, fáciles de difuminar.",
+      "categoria": "Ojos",
+      "tono": "6 Tonos",
+      "marca": "Tersa",
+      "precio": 8900,
+      "imagen": "paleta.jpg"
+    },
+    {
+      "id": "4",
+      "nombre": "Máscara Lash Volume",
+      "description": "Máscara de pestañas que da volumen sin grumos y resiste el agua.",
+      "categoria": "Ojos",
+      "tono": "Negro Intenso",
+      "marca": "Tersa",
+      "precio": 5200,
+      "imagen": "mascara.jpg"
+    },
+    {
+      "id": "5",
+      "nombre": "Base Fluida Skin",
+      "description": "Base de cobertura media con acabado natural y textura liviana.",
+      "categoria": "Rostro",
+      "tono": "Natural",
+      "marca": "Tersa",
+      "precio": 7500,
+      "imagen": "base.png"
+    },
+    {
+      "id": "6",
+      "nombre": "Rubor Compacto Peach",
+      "description": "Rubor en polvo de color construible para un efecto fresco.",
+      "categoria": "Rostro",
+      "tono": "Durazno",
+      "marca": "Tersa",
+      "precio": 4800,
+      "imagen": "rubor.png"
+    },
+    {
+      "id": "7",
+      "nombre": "Iluminador Glow Dorado",
+      "description": "Iluminador compacto con partículas finas para un brillo luminoso.",
+      "categoria": "Rostro",
+      "tono": "Acabado Luminoso",
+      "marca": "Tersa",
+      "precio": 6300,
+      "imagen": "iluminador.png"
+    },
+    {
+      "id": "8",
+      "nombre": "Delineador Líquido Precisión",
+      "description": "Delineador de punta fina para trazos precisos y secado rápido.",
+      "categoria": "Ojos",
+      "tono": "Negro Mate",
+      "marca": "Tersa",
+      "precio": 3900,
+      "imagen": "delineador.png"
+    }
+  ],
+   "carrito": [],
+  "consultas": []
+}

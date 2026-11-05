@@ -1,0 +1,37 @@
+@use 'variables' as *;
+
+@mixin tarjeta($padding: 20px) {
+  background-color: $color-tarjeta;
+  border: 1px solid $color-borde;
+  border-radius: $radio;
+  padding: $padding;
+}
+
+@mixin campo-texto {
+  padding: 10px;
+  border: 1px solid $color-borde;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 14px;
+  color: $color-texto;
+  background-color: $color-fondo;
+
+  &:focus {
+    outline: none;
+    border-color: $color-principal;
+    background-color: $color-tarjeta;
+    box-shadow: 0 0 0 3px rgba($color-principal, 0.25);
+  }
+}
+
+@mixin tablet {
+  @media (max-width: $pantalla-tablet) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: $pantalla-mobile) {
+    @content;
+  }
+}

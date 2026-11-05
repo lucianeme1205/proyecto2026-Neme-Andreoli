@@ -1,0 +1,54 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.formulario {
+  @include tarjeta(30px);
+  max-width: 550px;
+  margin: 0 auto;
+}
+
+.campo {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+
+  label {
+    font-weight: bold;
+    margin-bottom: 6px;
+    font-size: 14px;
+  }
+
+  input,
+  textarea,
+  select {
+    @include campo-texto;
+  }
+
+  textarea {
+    resize: none;
+  }
+
+  &-invalido {
+    input,
+    textarea {
+      border-color: $color-error;
+    }
+  }
+}
+
+.mensaje-error {
+  color: $color-error;
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+.mensaje-exito {
+  color: $color-exito;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 15px;
+}
+
+.btn-ancho {
+  width: 100%;
+}
