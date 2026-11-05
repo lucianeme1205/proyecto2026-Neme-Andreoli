@@ -1,11 +1,26 @@
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { useAuth } from '@hooks/useAuth';
+import Button from '@components/Button';
 
 /**
- * Encabezado del sitio con el logo y la navegación.
+ * Encabezado del sitio con el logo, la navegación y la sesión del usuario.
  * @method Header
  * @return {JSX.Element} Encabezado.
  */
 const Header = () => {
+  const { usuario, estaLogueado, logout } = useAuth();
+  const navigate = useNavigate();
+
+  /**
+   * Cierra la sesión y vuelve a la página de inicio.
+   * @method cerrarSesion
+   * @return {void}
+   */
+  const cerrarSesion = () => {
+    logout();
+    navigate('/');
+  };
+
   return (
     <header className="header-principal">
       <div className="container nav-container">
@@ -21,6 +36,16 @@ const Header = () => {
             <li><NavLink to="/carrito">Carrito</NavLink></li>
           </ul>
         </nav>
+        <div className="nav-usuario">
+          {estaLogueado ? (
+            <>
+              <span>Hola, {usuario.nombre}</span>
+              <Button variante="borde" chico onClick={cerrarSesion}>Cerrar sesión</Button>
+            </>
+          ) : (
+            <Link to="/login" className="btn btn-borde btn-chico">Iniciar sesión</Link>
+          )}
+        </div>
       </div>
     </header>
   );

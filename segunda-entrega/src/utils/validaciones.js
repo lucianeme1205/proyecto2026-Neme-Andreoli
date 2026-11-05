@@ -57,3 +57,16 @@ export const validarCantidad = (cantidad) => {
   }
   return '';
 };
+
+/**
+ * Comprueba que la contraseña no esté vacía y tenga al menos 4 caracteres.
+ * @method validarPassword
+ * @param {string} password - Contraseña ingresada por el usuario.
+ * @return {string} Mensaje de error, o un texto vacío si la contraseña es válida.
+ */
+export const validarPassword = (password) => {
+  if (password.length < 4) {
+    return 'La contraseña debe tener al menos 4 caracteres.';
+  }
+  return '';
+};
