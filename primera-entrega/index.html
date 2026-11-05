@@ -53,7 +53,7 @@
                 <h2 class="titulo-seccion">Nuestros Productos</h2>
                 <p class="subtitulo-seccion">Conocé nuestra línea destacada para rostro, labios y ojos.</p>
                 <div class="grid-productos">
-                    <article class="tarjeta-producto">
+                    <article class="tarjeta-producto" data-categoria="labios">
                         <img src="imagenes/labial.jpg" alt="Labial Matte Velvet">
                         <div class="info-producto">
                             <h3>Labial Matte Velvet</h3>
@@ -66,7 +66,7 @@
                             <button type="button" class="btn btn-borde btn-chico" onclick="agregarAlCarrito('Labial Matte Velvet', 'cantidad-labial')">Agregar al carrito</button>
                         </div>
                     </article>
-                    <article class="tarjeta-producto">
+                    <article class="tarjeta-producto" data-categoria="labios">
                         <img src="imagenes/gloss.jpg" alt="Gloss Brillo Radiante">
                         <div class="info-producto">
                             <h3>Gloss Brillo Radiante</h3>
@@ -79,7 +79,7 @@
                             <button type="button" class="btn btn-borde btn-chico" onclick="agregarAlCarrito('Gloss Brillo Radiante', 'cantidad-gloss')">Agregar al carrito</button>
                         </div>
                     </article>
-                    <article class="tarjeta-producto">
+                    <article class="tarjeta-producto" data-categoria="ojos">
                         <img src="imagenes/paleta.jpg" alt="Paleta de Sombras Warm">
                         <div class="info-producto">
                             <h3>Paleta de Sombras Warm</h3>
@@ -92,7 +92,7 @@
                             <button type="button" class="btn btn-borde btn-chico" onclick="agregarAlCarrito('Paleta de Sombras Warm', 'cantidad-paleta')">Agregar al carrito</button>
                         </div>
                     </article>
-                    <article class="tarjeta-producto">
+                    <article class="tarjeta-producto" data-categoria="ojos">
                         <img src="imagenes/mascara.jpg" alt="Máscara Lash Volume">
                         <div class="info-producto">
                             <h3>Máscara Lash Volume</h3>
@@ -103,6 +103,58 @@
                                 <input type="text" id="cantidad-mascara" name="cantidad-mascara" size="2" maxlength="2" value="1" placeholder="1">
                             </div>
                             <button type="button" class="btn btn-borde btn-chico" onclick="agregarAlCarrito('Máscara Lash Volume', 'cantidad-mascara')">Agregar al carrito</button>
+                        </div>
+                    </article>
+                    <article class="tarjeta-producto" data-categoria="rostro">
+                        <img src="imagenes/base.png" alt="Base Fluida Skin">
+                        <div class="info-producto">
+                            <h3>Base Fluida Skin</h3>
+                            <p class="categoria">Rostro · Tono Natural</p>
+                            <p class="precio">$ 7.500</p>
+                            <div class="campo-cantidad">
+                                <label for="cantidad-base">Cantidad:</label>
+                                <input type="text" id="cantidad-base" name="cantidad-base" size="2" maxlength="2" value="1" placeholder="1">
+                            </div>
+                            <button type="button" class="btn btn-borde btn-chico" onclick="agregarAlCarrito('Base Fluida Skin', 'cantidad-base')">Agregar al carrito</button>
+                        </div>
+                    </article>
+                    <article class="tarjeta-producto" data-categoria="rostro">
+                        <img src="imagenes/rubor.png" alt="Rubor Compacto Peach">
+                        <div class="info-producto">
+                            <h3>Rubor Compacto Peach</h3>
+                            <p class="categoria">Rostro · Tono Durazno</p>
+                            <p class="precio">$ 4.800</p>
+                            <div class="campo-cantidad">
+                                <label for="cantidad-rubor">Cantidad:</label>
+                                <input type="text" id="cantidad-rubor" name="cantidad-rubor" size="2" maxlength="2" value="1" placeholder="1">
+                            </div>
+                            <button type="button" class="btn btn-borde btn-chico" onclick="agregarAlCarrito('Rubor Compacto Peach', 'cantidad-rubor')">Agregar al carrito</button>
+                        </div>
+                    </article>
+                    <article class="tarjeta-producto" data-categoria="rostro">
+                        <img src="imagenes/iluminador.png" alt="Iluminador Glow Dorado">
+                        <div class="info-producto">
+                            <h3>Iluminador Glow Dorado</h3>
+                            <p class="categoria">Rostro · Acabado Luminoso</p>
+                            <p class="precio">$ 6.300</p>
+                            <div class="campo-cantidad">
+                                <label for="cantidad-iluminador">Cantidad:</label>
+                                <input type="text" id="cantidad-iluminador" name="cantidad-iluminador" size="2" maxlength="2" value="1" placeholder="1">
+                            </div>
+                            <button type="button" class="btn btn-borde btn-chico" onclick="agregarAlCarrito('Iluminador Glow Dorado', 'cantidad-iluminador')">Agregar al carrito</button>
+                        </div>
+                    </article>
+                    <article class="tarjeta-producto" data-categoria="ojos">
+                        <img src="imagenes/delineador.png" alt="Delineador Líquido Precisión">
+                        <div class="info-producto">
+                            <h3>Delineador Líquido Precisión</h3>
+                            <p class="categoria">Ojos · Negro Mate</p>
+                            <p class="precio">$ 3.900</p>
+                            <div class="campo-cantidad">
+                                <label for="cantidad-delineador">Cantidad:</label>
+                                <input type="text" id="cantidad-delineador" name="cantidad-delineador" size="2" maxlength="2" value="1" placeholder="1">
+                            </div>
+                            <button type="button" class="btn btn-borde btn-chico" onclick="agregarAlCarrito('Delineador Líquido Precisión', 'cantidad-delineador')">Agregar al carrito</button>
                         </div>
                     </article>
                 </div>
@@ -122,7 +174,7 @@
 
     <div id="modalCarrito" role="dialog" aria-modal="true" aria-labelledby="tituloCarrito">
         <div id="modalCarritoContenido">
-               <h3 id="tituloCarrito">Tu Carrito</h3>
+            <h3 id="tituloCarrito">Tu Carrito</h3>
             <div id="listaCarrito"></div>
             <p id="totalCarrito">Total: $ 0</p>
             <div class="modal-acciones">

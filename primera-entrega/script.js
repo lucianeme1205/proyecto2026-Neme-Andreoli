@@ -6,7 +6,11 @@ const productos = [
     { nombre: "Labial Matte Velvet", precio: 4200, imagen: "imagenes/labial.jpg" },
     { nombre: "Gloss Brillo Radiante", precio: 3600, imagen: "imagenes/gloss.jpg" },
     { nombre: "Paleta de Sombras Warm", precio: 8900, imagen: "imagenes/paleta.jpg" },
-    { nombre: "Máscara Lash Volume", precio: 5200, imagen: "imagenes/mascara.jpg" }
+    { nombre: "Máscara Lash Volume", precio: 5200, imagen: "imagenes/mascara.jpg" },
+    { nombre: "Base Fluida Skin", precio: 7500, imagen: "imagenes/base.png" },
+    { nombre: "Rubor Compacto Peach", precio: 4800, imagen: "imagenes/rubor.png" },
+    { nombre: "Iluminador Glow Dorado", precio: 6300, imagen: "imagenes/iluminador.png" },
+    { nombre: "Delineador Líquido Precisión", precio: 3900, imagen: "imagenes/delineador.png" }
 ];
 /**
  * Máximo de unidades de un mismo producto que se pueden tener en el carrito.
