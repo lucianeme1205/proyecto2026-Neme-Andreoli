@@ -92,6 +92,10 @@ h1, h2, h3 {
     background-color: var(--color-principal);
     color: #FFFFFF;
 }
+.btn:disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}
 
 /* ===== 3. ENCABEZADO / NAVEGACIÓN ===== */
 .header-principal {
@@ -183,6 +187,48 @@ h1, h2, h3 {
     text-align: center;
     color: var(--color-texto-suave);
     margin-bottom: 40px;
+}
+
+.barra-filtros {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 20px;
+    margin-bottom: 15px;
+}
+
+.filtro {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 14px;
+}
+
+.filtro label {
+    font-weight: bold;
+    color: var(--color-texto-suave);
+}
+
+.filtro input, .filtro select {
+    padding: 8px 10px;
+    border: 1px solid var(--color-borde);
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 14px;
+    color: var(--color-texto);
+    background-color: var(--color-tarjeta);
+}
+
+.resultado-filtro {
+    text-align: center;
+    color: var(--color-texto-suave);
+    min-height: 26px;
+    margin-bottom: 15px;
+}
+
+.tarjeta-producto.oculto {
+    display: none;
 }
 
 .grid-productos {
@@ -326,7 +372,11 @@ h1, h2, h3 {
     background-color: var(--color-fondo);
 }
 
-.campo input:focus, .campo textarea:focus, .campo-cantidad input:focus {
+.campo textarea {
+    resize: none;
+}
+
+.campo input:focus, .campo textarea:focus, .campo-cantidad input:focus, .filtro input:focus, .filtro select:focus {
     outline: none;
     border-color: var(--color-principal);
     background-color: #FFFFFF;
@@ -470,6 +520,11 @@ h1, h2, h3 {
 @media (max-width: 500px) {
     .grid-productos {
         grid-template-columns: 1fr;
+    }
+
+    .barra-filtros {
+        flex-direction: column;
+        align-items: stretch;
     }
 
     .hero-texto h2 {
