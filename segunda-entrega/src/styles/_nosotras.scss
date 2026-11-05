@@ -1,0 +1,44 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.nosotras-seccion {
+  background-color: $color-fondo-alt;
+  text-align: center;
+}
+
+.nosotras-texto {
+  max-width: 700px;
+  margin: 0 auto;
+
+  h2 {
+    font-size: 28px;
+    margin-bottom: 15px;
+  }
+
+  p {
+    margin-bottom: 10px;
+    color: $color-texto-suave;
+  }
+
+  .btn {
+    margin-top: 15px;
+  }
+}
+
+.grid-valores {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.tarjeta-valor {
+  @include tarjeta;
+  text-align: center;
+}
+
+@include mobile {
+  .grid-valores {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import Layout from '@components/Layout';
+import Nosotras from '@pages/Nosotras';
 import NoEncontrada from '@pages/NoEncontrada';
 
 /**
@@ -11,6 +12,7 @@ const App = () => {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
+        <Route path="nosotras" element={<Nosotras />} />
         <Route path="*" element={<NoEncontrada />} />
       </Route>
     </Routes>
