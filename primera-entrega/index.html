@@ -52,6 +52,23 @@
             <div class="container">
                 <h2 class="titulo-seccion">Nuestros Productos</h2>
                 <p class="subtitulo-seccion">Conocé nuestra línea destacada para rostro, labios y ojos.</p>
+                <div class="barra-filtros">
+                    <div class="filtro">
+                        <label for="buscador">Buscar producto:</label>
+                        <input type="text" id="buscador" name="buscador" size="25" maxlength="30" placeholder="Ej: labial, rubor..." oninput="filtrarProductos()">
+                    </div>
+                    <div class="filtro">
+                        <label for="filtroCategoria">Categoría:</label>
+                        <select id="filtroCategoria" name="filtroCategoria" onchange="filtrarProductos()">
+                            <option value="todas">Todas</option>
+                            <option value="rostro">Rostro</option>
+                            <option value="labios">Labios</option>
+                            <option value="ojos">Ojos</option>
+                        </select>
+                    </div>
+                    <button type="button" class="btn btn-borde btn-chico" onclick="limpiarFiltros()">Limpiar filtros</button>
+                </div>
+                <p id="resultadoFiltro" class="resultado-filtro"></p>
                 <div class="grid-productos">
                     <article class="tarjeta-producto" data-categoria="labios">
                         <img src="imagenes/labial.jpg" alt="Labial Matte Velvet">
