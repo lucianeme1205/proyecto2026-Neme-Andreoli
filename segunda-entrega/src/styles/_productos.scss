@@ -1,0 +1,77 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.barra-filtros {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 20px;
+  margin-bottom: 15px;
+
+  .campo {
+    margin-bottom: 0;
+  }
+}
+
+.grid-productos {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+}
+
+.tarjeta-producto {
+  @include tarjeta(0);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+
+  img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+  }
+}
+
+.info-producto {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+
+  h3 {
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+}
+
+.categoria {
+  font-size: 13px;
+  color: $color-texto-suave;
+  margin-bottom: 15px;
+}
+
+.precio {
+  font-size: 18px;
+  font-weight: bold;
+  color: $color-principal;
+  margin-top: auto;
+  margin-bottom: 15px;
+}
+
+@include tablet {
+  .grid-productos {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@include mobile {
+  .grid-productos {
+    grid-template-columns: 1fr;
+  }
+
+  .barra-filtros {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
