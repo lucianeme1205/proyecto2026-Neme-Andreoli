@@ -330,6 +330,10 @@ h1, h2, h3 {
     background-color: var(--color-fondo);
 }
 
+.campo textarea {
+       resize: none;
+   }
+   
 .campo input:focus, .campo textarea:focus, .campo-cantidad input:focus {
     outline: none;
     border-color: var(--color-principal);
