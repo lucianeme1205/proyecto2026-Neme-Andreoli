@@ -44,3 +44,29 @@ export const validarMensaje = (mensaje) => {
   }
   return '';
 };
+
+/**
+ * Comprueba que la cantidad sea un número entero entre 1 y 99.
+ * @method validarCantidad
+ * @param {string} cantidad - Cantidad ingresada por el usuario.
+ * @return {string} Mensaje de error, o un texto vacío si la cantidad es válida.
+ */
+export const validarCantidad = (cantidad) => {
+  if (!/^[0-9]+$/.test(cantidad) || Number(cantidad) < 1 || Number(cantidad) > 99) {
+    return 'Ingresá un número entero entre 1 y 99.';
+  }
+  return '';
+};
+
+/**
+ * Comprueba que la contraseña no esté vacía y tenga al menos 4 caracteres.
+ * @method validarPassword
+ * @param {string} password - Contraseña ingresada por el usuario.
+ * @return {string} Mensaje de error, o un texto vacío si la contraseña es válida.
+ */
+export const validarPassword = (password) => {
+  if (password.length < 4) {
+    return 'La contraseña debe tener al menos 4 caracteres.';
+  }
+  return '';
+};
