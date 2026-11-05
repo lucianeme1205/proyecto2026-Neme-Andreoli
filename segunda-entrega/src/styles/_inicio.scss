@@ -1,0 +1,63 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.hero {
+  padding: 60px 0;
+  background-color: $color-fondo-alt;
+}
+
+.hero-container {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.hero-texto,
+.hero-imagen {
+  flex: 1;
+}
+
+.hero-texto {
+  h2 {
+    font-size: 38px;
+    margin-bottom: 15px;
+    line-height: 1.2;
+  }
+
+  p {
+    color: $color-texto-suave;
+    margin-bottom: 25px;
+  }
+}
+
+.hero-botones {
+  display: flex;
+  gap: 15px;
+}
+
+.hero-imagen img {
+  border-radius: 8px;
+  box-shadow: $sombra;
+}
+
+.ver-todos {
+  text-align: center;
+  margin-top: 30px;
+}
+
+@include tablet {
+  .hero-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-botones {
+    justify-content: center;
+  }
+}
+
+@include mobile {
+  .hero-texto h2 {
+    font-size: 30px;
+  }
+}
