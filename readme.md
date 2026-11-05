@@ -12,6 +12,7 @@ Sitio web de e-commerce para **Tersa**, una marca ficticia de cosmética vegana 
   - [Sitio publicado](#sitio-publicado)
   - [Contenido](#contenido)
   - [Funcionalidades](#funcionalidades)
+    - [Búsqueda y filtro](#búsqueda-y-filtro)
     - [Carrito de compras](#carrito-de-compras)
     - [Validaciones](#validaciones)
   - [Tecnologías](#tecnologías)
@@ -41,6 +42,14 @@ El sitio tiene **3 páginas** que comparten encabezado, navegación, pie de pág
 | Contacto | `contacto.html` | Formulario de consultas |
 
 ## Funcionalidades
+
+### Búsqueda y filtro
+
+- El catálogo tiene **8 productos** en tres categorías: **Rostro**, **Labios** y **Ojos**.
+- Un **buscador** filtra los productos por nombre mientras se escribe (sin importar mayúsculas ni acentos).
+- Un **filtro por categoría** permite ver solo los productos de rostro, labios u ojos, y se puede combinar con el buscador.
+- Se informa cuántos productos se encontraron, o un mensaje si no hay resultados.
+- El botón **Limpiar filtros** vuelve a mostrar el catálogo completo.
 
 ### Carrito de compras
 

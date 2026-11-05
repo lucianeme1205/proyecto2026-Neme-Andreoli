@@ -6,7 +6,11 @@ const productos = [
     { nombre: "Labial Matte Velvet", precio: 4200, imagen: "imagenes/labial.jpg" },
     { nombre: "Gloss Brillo Radiante", precio: 3600, imagen: "imagenes/gloss.jpg" },
     { nombre: "Paleta de Sombras Warm", precio: 8900, imagen: "imagenes/paleta.jpg" },
-    { nombre: "Máscara Lash Volume", precio: 5200, imagen: "imagenes/mascara.jpg" }
+    { nombre: "Máscara Lash Volume", precio: 5200, imagen: "imagenes/mascara.jpg" },
+    { nombre: "Base Fluida Skin", precio: 7500, imagen: "imagenes/base.png" },
+    { nombre: "Rubor Compacto Peach", precio: 4800, imagen: "imagenes/rubor.png" },
+    { nombre: "Iluminador Glow Dorado", precio: 6300, imagen: "imagenes/iluminador.png" },
+    { nombre: "Delineador Líquido Precisión", precio: 3900, imagen: "imagenes/delineador.png" }
 ];
 /**
  * Máximo de unidades de un mismo producto que se pueden tener en el carrito.
@@ -257,6 +261,59 @@ const actualizarContadorCarrito = () => {
     const carrito = obtenerCarrito();
     const totalItems = carrito.reduce((acumulado, item) => acumulado + item.cantidad, 0);
     document.getElementById("contadorCarrito").textContent = totalItems;
+};
+
+/**
+ * Pasa un texto a minúsculas y le quita los acentos, para comparar sin importar cómo se escribió.
+ * @method normalizarTexto
+ * @param {string} texto - Texto a normalizar.
+ * @return {string} Texto en minúsculas y sin acentos.
+ */
+const normalizarTexto = (texto) => {
+    return texto.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
+};
+
+/**
+ * Muestra solo los productos cuyo nombre contiene el texto buscado y que pertenecen
+ * a la categoría elegida. Informa cuántos productos se encontraron o si no hay resultados.
+ * @method filtrarProductos
+ * @return {void}
+ */
+const filtrarProductos = () => {
+    const buscador = document.getElementById("buscador");
+    const texto = normalizarTexto(buscador.value);
+    const categoria = document.getElementById("filtroCategoria").value;
+    const tarjetas = document.querySelectorAll(".tarjeta-producto");
+    let visibles = 0;
+    tarjetas.forEach((tarjeta) => {
+        const nombre = normalizarTexto(tarjeta.querySelector("h3").textContent);
+        const coincideTexto = nombre.includes(texto);
+        const coincideCategoria = categoria === "todas" || tarjeta.dataset.categoria === categoria;
+        const mostrar = coincideTexto && coincideCategoria;
+        tarjeta.classList.toggle("oculto", !mostrar);
+        if (mostrar) {
+            visibles++;
+        }
+    });
+    const resultado = document.getElementById("resultadoFiltro");
+    if (visibles === 0) {
+        resultado.textContent = "No encontramos productos que coincidan con tu búsqueda.";
+    } else if (texto !== "" || categoria !== "todas") {
+        resultado.textContent = `Se encontraron ${visibles} producto(s).`;
+    } else {
+        resultado.textContent = "";
+    }
+};
+
+/**
+ * Borra el texto del buscador, vuelve la categoría a "Todas" y muestra el catálogo completo.
+ * @method limpiarFiltros
+ * @return {void}
+ */
+const limpiarFiltros = () => {
+    document.getElementById("buscador").value = "";
+    document.getElementById("filtroCategoria").value = "todas";
+    filtrarProductos();
 };
 
 /**
