@@ -1,0 +1,58 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.carrito {
+  @include tarjeta(25px);
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+.carrito-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  border-bottom: 1px solid $color-borde;
+  padding: 12px 0;
+
+  img {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 4px;
+  }
+}
+
+.carrito-item-info {
+  flex-grow: 1;
+  font-size: 14px;
+}
+
+.carrito-cantidad {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.carrito-total {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: right;
+  margin-top: 20px;
+}
+
+.carrito-acciones {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+@include mobile {
+  .carrito-item {
+    flex-wrap: wrap;
+  }
+
+  .carrito-acciones {
+    flex-direction: column;
+  }
+}
