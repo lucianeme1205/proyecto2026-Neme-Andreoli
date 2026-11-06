@@ -61,7 +61,9 @@ const ProductCard = ({ producto, onAgregar }) => {
     <article className="tarjeta-producto">
       <img src={`/imagenes/${producto.imagen}`} alt={producto.nombre} />
       <div className="info-producto">
+        <p className="marca">{producto.marca}</p>
         <h3>{producto.nombre}</h3>
+        <p className="descripcion">{producto.description}</p>
         <p className="categoria">{producto.categoria} · {producto.tono}</p>
         <p className="precio">{formatearPrecio(producto.precio)}</p>
         <Input id={idCantidad} label="Cantidad:" value={cantidad} onChange={cambiarCantidad} error={error} maxLength={2} placeholder="1" />
