@@ -22,6 +22,10 @@ Sitio web de e-commerce para **Tersa**, una marca ficticia de cosmética vegana 
     - [Vulnerabilidades](#vulnerabilidades)
   - [Primera entrega: HTML, CSS y JavaScript](#primera-entrega-html-css-y-javascript)
     - [Contenido](#contenido)
+    - [Funcionalidades](#funcionalidades)
+    - [Validaciones](#validaciones)
+    - [Tecnologías](#tecnologías)
+    - [Prototipos](#prototipos)
 
 ## Autoras
 
@@ -167,4 +171,41 @@ La primera entrega está en la carpeta `primera-entrega`.
 
 ### Contenido
 
-El sitio tiene **3 páginas** que comparten encabezado, navegación, pie de
+El sitio tiene **3 páginas** que comparten encabezado, navegación, pie de página y carrito:
+
+| Página | Archivo | Contenido |
+|---|---|---|
+| Inicio | `index.html` | Presentación de la marca y catálogo de productos |
+| Nosotras | `nosotras.html` | Historia y filosofía de Tersa |
+| Contacto | `contacto.html` | Formulario de consultas |
+
+### Funcionalidades
+
+- El catálogo tiene **8 productos** en tres categorías: **Rostro**, **Labios** y **Ojos**.
+- Un **buscador** filtra los productos por nombre y un **filtro por categoría** permite ver solo una categoría.
+- En cada producto se escribe la **cantidad** y se agrega al carrito, que calcula el **subtotal** y el **total**.
+- El carrito se guarda en `localStorage`, por lo que se mantiene al recargar o cambiar de página.
+
+### Validaciones
+
+Cuando un valor es incorrecto se avisa con un `alert` y se blanquea el campo:
+
+| Campo | Regla |
+|---|---|
+| Cantidad | Número entero mayor a 0, hasta 99 unidades por producto en el carrito |
+| Nombre y Apellido | Al menos dos palabras, solo letras, guiones o apóstrofes (máximo 50 caracteres) |
+| Correo Electrónico | Formato `nombre@correo.com` |
+| Consulta o Mensaje | Mínimo 10 caracteres |
+
+### Tecnologías
+
+- **HTML5** — etiquetas semánticas (`header`, `nav`, `main`, `section`, `article`, `footer`)
+- **CSS3** — variables, Flexbox, Grid y `@media` para la versión mobile
+- **JavaScript** — funciones flecha, manejo del DOM y `localStorage`
+- **Google Fonts** — tipografía *Poppins*
+- **Git y GitHub** — control de versiones y publicación con GitHub Pages
+
+### Prototipos
+
+- **Sketch:** prototipo en papel, en versión desktop y mobile, dentro de `primera-entrega/Sketch`.
+- **Wireframe:** prototipo digital realizado en Figma, en versión desktop y mobile, dentro de `primera-entrega/Wireframe`.
