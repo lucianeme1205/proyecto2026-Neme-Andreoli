@@ -82,5 +82,13 @@
     }
   ],
    "carrito": [],
-  "consultas": []
+  "consultas": [],
+  "usuarios": [
+    {
+      "id": "1",
+      "nombre": "Admin Tersa",
+      "email": "admin@tersa.com",
+      "password": "1234"
+    }
+  ]
 }

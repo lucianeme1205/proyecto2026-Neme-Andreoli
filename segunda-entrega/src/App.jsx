@@ -1,4 +1,3 @@
-jsx
 import { Route, Routes } from 'react-router-dom';
 import Layout from '@layout/Layout';
 import ProtectedRoute from '@components/ProtectedRoute';
@@ -7,6 +6,7 @@ import Productos from '@pages/Productos';
 import Nosotras from '@pages/Nosotras';
 import Contacto from '@pages/Contacto';
 import Login from '@pages/Login';
+import Registro from '@pages/Registro';
 import Carrito from '@pages/Carrito';
 import NoEncontrada from '@pages/NoEncontrada';
 
@@ -25,6 +25,7 @@ const App = () => {
         <Route path="nosotras" element={<Nosotras />} />
         <Route path="contacto" element={<Contacto />} />
         <Route path="login" element={<Login />} />
+        <Route path="registro" element={<Registro />} />
         <Route element={<ProtectedRoute />}>
           <Route path="carrito" element={<Carrito />} />
         </Route>

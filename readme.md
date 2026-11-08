@@ -2,7 +2,7 @@
 
 Proyecto integrador de la materia **Taller de Desarrollo Web** (UCC) — **2026**.
 
-Sitio web de e-commerce para **Tersa**, una marca ficticia de cosmética vegana y cruelty-free, con catálogo de productos, carrito de compras, inicio de sesión y formulario de contacto.
+Sitio web de e-commerce para **Tersa**, una marca ficticia de cosmética vegana y cruelty-free, con catálogo de productos, carrito de compras, registro e inicio de sesión, y formulario de contacto.
 
 ## Índice
 
@@ -22,10 +22,6 @@ Sitio web de e-commerce para **Tersa**, una marca ficticia de cosmética vegana 
     - [Vulnerabilidades](#vulnerabilidades)
   - [Primera entrega: HTML, CSS y JavaScript](#primera-entrega-html-css-y-javascript)
     - [Contenido](#contenido)
-    - [Funcionalidades](#funcionalidades)
-    - [Validaciones](#validaciones)
-    - [Tecnologías](#tecnologías)
-    - [Prototipos](#prototipos)
 
 ## Autoras
 
@@ -73,7 +69,7 @@ Se necesita tener instalado **Node.js** (versión 22 o superior).
 | `dev` | `npm run dev` | Levanta la aplicación en modo desarrollo |
 | `services` | `npm run services` | Levanta json-server con `src/data/db.json` en el puerto 4000 |
 | `build` | `npm run build` | Genera la versión de producción en `dist` |
-| `lint` | `npm run lint` | Revisa el código con oxlint |
+| `lint` | `npm run lint` | Revisa el código con ESLint |
 | `preview` | `npm run preview` | Muestra la versión de producción generada |
 
 ### Usuario de prueba
@@ -82,6 +78,8 @@ Se necesita tener instalado **Node.js** (versión 22 o superior).
 |---|---|
 | Correo | `admin@tersa.com` |
 | Contraseña | `1234` |
+
+También se puede crear una cuenta nueva desde la página **Crear cuenta** (`/registro`).
 
 ### Páginas
 
@@ -94,6 +92,7 @@ Todas las páginas se muestran dentro de un **Layout** con encabezado y pie, usa
 | `/nosotras` | Nosotras | Historia y valores de Tersa |
 | `/contacto` | Contacto | Formulario de consultas |
 | `/login` | Login | Inicio de sesión |
+| `/registro` | Registro | Creación de una cuenta nueva |
 | `/carrito` | Carrito | Carrito de compras (**solo con sesión iniciada**) |
 | Cualquier otra | No encontrada | Mensaje de página inexistente |
 
@@ -101,21 +100,22 @@ Todas las páginas se muestran dentro de un **Layout** con encabezado y pie, usa
 
 - **Catálogo dinámico:** los productos se obtienen del servicio mock con `fetch` y `async/await`.
 - **Buscador y filtro:** se busca por nombre (sin importar mayúsculas ni acentos) y se filtra por categoría.
-- **Inicio de sesión:** usa Context API, un provider y el hook personalizado `useAuth`. La sesión se guarda en `localStorage`, así que se mantiene al recargar.
+- **Registro e inicio de sesión:** se puede crear una cuenta, que se guarda en el servicio mock, y después iniciar sesión con ella. No se permiten dos cuentas con el mismo correo. Usa Context API, un provider y el hook personalizado `useAuth`. La sesión se guarda en `localStorage` (sin la contraseña), así que se mantiene al recargar.
 - **Ruta protegida:** si no hay sesión, el carrito redirige al login.
 - **Carrito:** se agregan productos, se suman o restan unidades, se eliminan y se vacía. Los datos se guardan en el servicio mock.
-- **Validaciones en tiempo real:** los formularios de contacto, login y la cantidad de cada producto se validan con `onChange` y muestran mensajes de error accesibles (`aria-invalid`, `aria-describedby` y `aria-live`).
+- **Validaciones en tiempo real:** los formularios de contacto, login y registro, y la cantidad de cada producto se validan con `onChange` y muestran mensajes de error accesibles (`aria-invalid`, `aria-describedby` y `aria-live`).
 - **Componentes genéricos:** `Button`, `Input` y `ProductCard` se reutilizan en varias páginas.
 
 ### Servicio mock
 
-El archivo `src/data/db.json` tiene tres colecciones:
+El archivo `src/data/db.json` tiene cuatro colecciones:
 
 | Colección | Uso | Métodos |
 |---|---|---|
 | `productos` | Catálogo de productos | GET |
 | `carrito` | Productos agregados al carrito | GET, POST, PATCH, DELETE |
 | `consultas` | Consultas del formulario de contacto | POST |
+| `usuarios` | Cuentas para iniciar sesión | GET, POST |
 
 La dirección del servicio se configura en el archivo `.env` con la variable `VITE_BASE_URL`.
 
@@ -126,7 +126,7 @@ La dirección del servicio se configura en el archivo `.env` con la variable `VI
 - **React Router** — rutas, rutas anidadas con `Outlet` y rutas protegidas
 - **Sass (SCSS)** — variables, mixins, anidación, parciales con `@use` y `@each`
 - **json-server** — servicio mock con `db.json`
-- **oxlint** — revisión de código
+- **ESLint** — revisión de código
 - **Google Fonts** — tipografía *Poppins*
 
 ### Estructura de la segunda entrega
@@ -144,11 +144,12 @@ segunda-entrega/
 └── src/
     ├── api/               → funciones que consultan el servicio mock
     ├── assets/            → imagen de presentación
-    ├── components/        → Layout, Header, Footer, Button, Input, ProductCard, ProtectedRoute
+    ├── components/        → Header, Footer, Button, Input, ProductCard, ProtectedRoute
     ├── context/           → AuthContext
     ├── data/              → db.json del servicio mock
     ├── hooks/             → useAuth, useProductos, useAgregarAlCarrito
-    ├── pages/             → Inicio, Productos, Nosotras, Contacto, Login, Carrito, NoEncontrada
+    ├── layout/            → Layout con el Outlet de las rutas
+    ├── pages/             → Inicio, Productos, Nosotras, Contacto, Login, Registro, Carrito, NoEncontrada
     ├── providers/         → AuthProvider
     ├── styles/            → archivos .scss
     ├── utils/             → validaciones y formato de precios
@@ -166,41 +167,4 @@ La primera entrega está en la carpeta `primera-entrega`.
 
 ### Contenido
 
-El sitio tiene **3 páginas** que comparten encabezado, navegación, pie de página y carrito:
-
-| Página | Archivo | Contenido |
-|---|---|---|
-| Inicio | `index.html` | Presentación de la marca y catálogo de productos |
-| Nosotras | `nosotras.html` | Historia y filosofía de Tersa |
-| Contacto | `contacto.html` | Formulario de consultas |
-
-### Funcionalidades
-
-- El catálogo tiene **8 productos** en tres categorías: **Rostro**, **Labios** y **Ojos**.
-- Un **buscador** filtra los productos por nombre y un **filtro por categoría** permite ver solo una categoría.
-- En cada producto se escribe la **cantidad** y se agrega al carrito, que calcula el **subtotal** y el **total**.
-- El carrito se guarda en `localStorage`, por lo que se mantiene al recargar o cambiar de página.
-
-### Validaciones
-
-Cuando un valor es incorrecto se avisa con un `alert` y se blanquea el campo:
-
-| Campo | Regla |
-|---|---|
-| Cantidad | Número entero mayor a 0, hasta 99 unidades por producto en el carrito |
-| Nombre y Apellido | Al menos dos palabras, solo letras, guiones o apóstrofes (máximo 50 caracteres) |
-| Correo Electrónico | Formato `nombre@correo.com` |
-| Consulta o Mensaje | Mínimo 10 caracteres |
-
-### Tecnologías
-
-- **HTML5** — etiquetas semánticas (`header`, `nav`, `main`, `section`, `article`, `footer`)
-- **CSS3** — variables, Flexbox, Grid y `@media` para la versión mobile
-- **JavaScript** — funciones flecha, manejo del DOM y `localStorage`
-- **Google Fonts** — tipografía *Poppins*
-- **Git y GitHub** — control de versiones y publicación con GitHub Pages
-
-### Prototipos
-
-- **Sketch:** prototipo en papel, en versión desktop y mobile, dentro de `primera-entrega/Sketch`.
-- **Wireframe:** prototipo digital realizado en Figma, en versión desktop y mobile, dentro de `primera-entrega/Wireframe`.
+El sitio tiene **3 páginas** que comparten encabezado, navegación, pie de

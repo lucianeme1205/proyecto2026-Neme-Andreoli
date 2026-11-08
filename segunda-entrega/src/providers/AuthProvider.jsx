@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { AuthContext } from '@context/AuthContext';
+import { crearUsuario, getUsuarios } from '@api/usuarios';
 
 /**
  * Clave con la que se guarda la sesión en localStorage.
@@ -8,19 +9,9 @@ import { AuthContext } from '@context/AuthContext';
 const CLAVE_SESION = 'usuarioTersa';
 
 /**
- * Usuario de prueba para iniciar sesión.
- * @type {{email: string, password: string, nombre: string}}
- */
-const USUARIO_PRUEBA = {
-  email: 'admin@tersa.com',
-  password: '1234',
-  nombre: 'Admin',
-};
-
-/**
  * Lee la sesión guardada en localStorage. Si no hay o está dañada, devuelve null.
  * @method leerSesion
- * @return {{email: string, nombre: string}|null} Usuario guardado o null.
+ * @return {{id: string, nombre: string, email: string}|null} Usuario guardado o null.
  */
 const leerSesion = () => {
   try {
@@ -32,7 +23,20 @@ const leerSesion = () => {
 };
 
 /**
- * Guarda el usuario que inició sesión y comparte las funciones de login y logout
+ * Trae los usuarios del servicio. Si el servicio no responde, lanza un error con un mensaje claro.
+ * @method traerUsuarios
+ * @return {Promise<Array<object>>} Lista de usuarios.
+ */
+const traerUsuarios = async () => {
+  try {
+    return await getUsuarios();
+  } catch {
+    throw new Error('No pudimos conectarnos con el servicio. Revisá que esté corriendo con npm run services.');
+  }
+};
+
+/**
+ * Guarda el usuario que inició sesión y comparte las funciones de login, registro y logout
  * con todos los componentes que estén adentro.
  * @method AuthProvider
  * @param {object} props - Propiedades del componente.
@@ -43,19 +47,49 @@ export const AuthProvider = ({ children }) => {
   const [usuario, setUsuario] = useState(leerSesion);
 
   /**
-   * Comprueba las credenciales y, si son correctas, guarda la sesión.
+   * Guarda en localStorage y en el estado los datos públicos del usuario (sin la contraseña).
+   * @method guardarSesion
+   * @param {{id: string, nombre: string, email: string}} datos - Usuario que inicia sesión.
+   * @return {void}
+   */
+  const guardarSesion = (datos) => {
+    const sesion = { id: datos.id, nombre: datos.nombre, email: datos.email };
+    localStorage.setItem(CLAVE_SESION, JSON.stringify(sesion));
+    setUsuario(sesion);
+  };
+
+  /**
+   * Busca un usuario con ese correo y contraseña y, si existe, inicia la sesión.
    * @method login
    * @param {string} email - Correo ingresado.
    * @param {string} password - Contraseña ingresada.
-   * @return {void}
+   * @return {Promise<void>}
    */
-  const login = (email, password) => {
-    if (email.trim() !== USUARIO_PRUEBA.email || password !== USUARIO_PRUEBA.password) {
+  const login = async (email, password) => {
+    const usuarios = await traerUsuarios();
+    const encontrado = usuarios.find((item) => item.email === email.trim().toLowerCase() && item.password === password);
+    if (!encontrado) {
       throw new Error('El correo o la contraseña son incorrectos.');
     }
-    const usuarioLogueado = { email: USUARIO_PRUEBA.email, nombre: USUARIO_PRUEBA.nombre };
-    localStorage.setItem(CLAVE_SESION, JSON.stringify(usuarioLogueado));
-    setUsuario(usuarioLogueado);
+    guardarSesion(encontrado);
+  };
+
+  /**
+   * Crea una cuenta nueva, si el correo no está registrado, e inicia la sesión.
+   * @method registrar
+   * @param {string} nombre - Nombre y apellido.
+   * @param {string} email - Correo de la cuenta.
+   * @param {string} password - Contraseña de la cuenta.
+   * @return {Promise<void>}
+   */
+  const registrar = async (nombre, email, password) => {
+    const emailNormalizado = email.trim().toLowerCase();
+    const usuarios = await traerUsuarios();
+    if (usuarios.some((item) => item.email === emailNormalizado)) {
+      throw new Error('Ya existe una cuenta con ese correo.');
+    }
+    const nuevo = await crearUsuario({ nombre: nombre.trim(), email: emailNormalizado, password });
+    guardarSesion(nuevo);
   };
 
   /**
@@ -69,7 +103,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ usuario, estaLogueado: usuario !== null, login, logout }}>
+    <AuthContext.Provider value={{ usuario, estaLogueado: usuario !== null, login, registrar, logout }}>
       {children}
     </AuthContext.Provider>
   );
