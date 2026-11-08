@@ -1,3 +1,4 @@
+
 import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
 import { fileURLToPath, URL } from 'node:url';
@@ -20,6 +21,7 @@ export default defineConfig({
       '@components': rutaSrc('components'),
       '@context': rutaSrc('context'),
       '@hooks': rutaSrc('hooks'),
+      '@layout': rutaSrc('layout'),
       '@pages': rutaSrc('pages'),
       '@providers': rutaSrc('providers'),
       '@styles': rutaSrc('styles'),
@@ -27,3 +29,4 @@ export default defineConfig({
     },
   },
 });
+
