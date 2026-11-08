@@ -1,5 +1,6 @@
+jsx
 import { Route, Routes } from 'react-router-dom';
-import Layout from '@components/Layout';
+import Layout from '@layout/Layout';
 import ProtectedRoute from '@components/ProtectedRoute';
 import Inicio from '@pages/Inicio';
 import Productos from '@pages/Productos';
