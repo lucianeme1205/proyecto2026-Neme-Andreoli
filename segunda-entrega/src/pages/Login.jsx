@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import Input from '@components/Input';
 import Button from '@components/Button';
 import { useAuth } from '@hooks/useAuth';
@@ -51,9 +51,9 @@ const Login = () => {
    * Valida los campos e intenta iniciar sesión. Si sale bien, va al carrito.
    * @method ingresar
    * @param {Event} evento - Evento submit del formulario.
-   * @return {void}
+   * @return {Promise<void>}
    */
-  const ingresar = (evento) => {
+  const ingresar = async (evento) => {
     evento.preventDefault();
     const nuevoErrorEmail = validarEmail(email);
     const nuevoErrorPassword = validarPassword(password);
@@ -63,7 +63,7 @@ const Login = () => {
       return;
     }
     try {
-      login(email, password);
+      await login(email, password);
       navigate('/carrito', { replace: true });
     } catch (error) {
       setErrorLogin(error.message);
@@ -80,6 +80,9 @@ const Login = () => {
           <Input id="password" label="Contraseña:" type="password" value={password} onChange={cambiarPassword} error={errorPassword} maxLength={20} />
           <Button type="submit" ancho>Ingresar</Button>
           <p className="mensaje-error" role="alert">{errorLogin}</p>
+          <p className="texto-ayuda">
+            ¿No tenés cuenta? <Link to="/registro">Creá una</Link>
+          </p>
         </form>
       </div>
     </section>

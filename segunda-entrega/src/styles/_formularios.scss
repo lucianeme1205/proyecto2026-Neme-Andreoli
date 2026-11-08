@@ -52,3 +52,15 @@
 .btn-ancho {
   width: 100%;
 }
+
+.texto-ayuda {
+  text-align: center;
+  font-size: 14px;
+  margin-top: 15px;
+
+  a {
+    color: $color-principal;
+    font-weight: bold;
+    text-decoration: underline;
+  }
+}

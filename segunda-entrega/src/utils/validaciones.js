@@ -70,3 +70,20 @@ export const validarPassword = (password) => {
   }
   return '';
 };
+
+/**
+ * Comprueba que la confirmación de la contraseña coincida con la contraseña.
+ * @method validarConfirmacion
+ * @param {string} password - Contraseña ingresada.
+ * @param {string} confirmacion - Contraseña repetida por el usuario.
+ * @return {string} Mensaje de error, o un texto vacío si coinciden.
+ */
+export const validarConfirmacion = (password, confirmacion) => {
+  if (confirmacion === '') {
+    return 'Repetí la contraseña.';
+  }
+  if (confirmacion !== password) {
+    return 'Las contraseñas no coinciden.';
+  }
+  return '';
+};
