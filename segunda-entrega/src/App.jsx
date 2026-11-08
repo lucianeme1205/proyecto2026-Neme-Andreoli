@@ -1,4 +1,3 @@
-jsx
 import { Route, Routes } from 'react-router-dom';
 import Layout from '@layout/Layout';
 import ProtectedRoute from '@components/ProtectedRoute';
